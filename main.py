@@ -15,20 +15,20 @@ from train import train
 parser = argparse.ArgumentParser()
 
 # Architecture Flags
-parser.add_argument('--input_dim', type=str, default='784,300,150')
-parser.add_argument('--stripe_dim', type=str, default='300,5,3')
-parser.add_argument('--num_stripes', type=str, default='1,30,12')
-parser.add_argument('--num_active_stripes', type=str, default='1,3,2')
+parser.add_argument('--input_dim', type=str, default='784,300,300, 300')
+parser.add_argument('--stripe_dim', type=str, default='300,10,10,3')
+parser.add_argument('--num_stripes', type=str, default='1,30,30,15')
+parser.add_argument('--num_active_stripes', type=str, default='1,4,4,1')
 parser.add_argument('--distort_prob', type=str,
-                    default='0.,.4,.4')  # Probability of stripe sparsity mask bits randomly flipping.
-parser.add_argument('--distort_prob_decay', type=str, default='0,.025,.025')  # Lowers distort_prob by this amount every epoch.
+                    default='0.,.4,.4,.4')  # Probability of stripe sparsity mask bits randomly flipping.
+parser.add_argument('--distort_prob_decay', type=str, default='0,.025,.025,.025')  # Lowers distort_prob by this amount every epoch.
 parser.add_argument('--relax_stripe_sparsity', type=str,
-                    default='0,2,1')  # Trains in final epoch with additional active stripes.
+                    default='0,2,2,1')  # Trains in final epoch with additional active stripes.
 
 # Training Flags
 parser.add_argument('--lr', type=float, default=.01)
 parser.add_argument('--momentum', type=float, default=.9)
-parser.add_argument('--num_epochs', type=int, default=1)
+parser.add_argument('--num_epochs', type=int, default=20)
 parser.add_argument('--batch_size', type=int, default=8)
 parser.add_argument('--data_path', type=str, default='data.csv')
 parser.add_argument('--log_path', type=str, default='logs')
