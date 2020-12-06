@@ -28,7 +28,7 @@ parser.add_argument('--relax_stripe_sparsity', type=str,
 # Training Flags
 parser.add_argument('--lr', type=float, default=.01)
 parser.add_argument('--momentum', type=float, default=.9)
-parser.add_argument('--num_epochs', type=int, default=20)
+parser.add_argument('--num_epochs', type=int, default=1)
 parser.add_argument('--batch_size', type=int, default=8)
 parser.add_argument('--data_path', type=str, default='data.csv')
 parser.add_argument('--log_path', type=str, default='logs')
@@ -44,7 +44,7 @@ def transform_data(net, data):
 
 
 def process_layer(criterion,
-                  root_path,
+                  log_path,
                   X_train,
                   X_test,
                   Y_test,
@@ -71,7 +71,7 @@ def process_layer(criterion,
     train(net,
           criterion,
           optimizer,
-          root_path,
+          log_path,
           X_train,
           X_test,
           Y_test,
@@ -113,7 +113,7 @@ def main(args):
 
         log_path = os.path.join(root_path, f'layer_{layer_count}')
         X_train, X_test = process_layer(criterion,
-                                        root_path,
+                                        log_path,
                                         X_train,
                                         X_test,
                                         Y_test,
